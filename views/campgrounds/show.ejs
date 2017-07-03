@@ -32,7 +32,7 @@
           <% } %>
 
           <!-- Edit && delete buttons -->
-          <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+          <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin ){ %>
             <div class="padBot text-right">
               <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
               <form class="inline padLeft" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
@@ -65,7 +65,7 @@
                 <br>
               </p>
               <!-- refactor to edit inline -->
-              <% if(currentUser && comments.author.id.equals(currentUser._id)) { %>
+              <% if(currentUser && comments.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
               <a href="/campgrounds/<%= campground._id %>/comments/<%= comments._id %>/edit"><button class="btn btn-xs btn-warning padBot">Edit</button></a>
               <form class="inline padLeft" action="/campgrounds/<%= campground._id %>/comments/<%= comments._id %>?_method=DELETE" method="POST">
                 <button type="submit" class="btn btn-xs btn-danger padBot">Delete</button>

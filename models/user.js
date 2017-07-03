@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-    passportLocalMongoose = require('passport-local-mongoose');
+  passportLocalMongoose = require('passport-local-mongoose');
 
 mongoose.Promise = global.Promise;
 
@@ -16,6 +16,10 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     //required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    default: false
   },
 });
 

@@ -13,7 +13,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
         res.redirect('back');
       } else {
         //does the user own the campground
-        if (foundCampground.author.id.equals(req.user._id)) { //mongoose ID is an opject, .equals convers to a string to compare (== or === won't work)
+        if (foundCampground.author.id.equals(req.user._id) || req.user.isAdmin) { //mongoose ID is an opject, .equals convers to a string to compare (== or === won't work)
           next();
         } else {
           req.flash("error", "You don't have permission to do that.");
@@ -37,7 +37,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
         res.redirect('back');
       } else {
         //does the user own the campground
-        if (foundComment.author.id.equals(req.user._id)) { //mongoose ID is an opject, .equals convers to a string to compare (== or === won't work)
+        if (foundComment.author.id.equals(req.user._id) || req.user.isAdmin) { //mongoose ID is an opject, .equals convers to a string to compare (== or === won't work)
           next();
         } else {
           req.flash("error", "You don't have permission to do that.");
