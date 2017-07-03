@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/head %>
+<body>
+<% include ./partials/nav %>
+
+  <div class="container padTop">
+    <div class="row padTop">
+      <div class="col-md-8 col-md-offset-2 padTop">
+
+        <h1>Sign Up</h1>
+        <h3 class="padBot">It's free and you're one step away from your next adventure.</h3>
+
+        <div class="form-horizontal col-md-12 ">
+            <form action="/register" method="POST">
+              <div class="form-group">
+                <label for="name" class="control-label col-sm-3">Email</label>
+                <div class="col-sm-6">
+                  <input id="name" class="form-control" type="text" name="username" placeholder="John@example.com" >
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="emaile" class="control-label col-sm-3">Name</label>
+                <div class="col-sm-6">
+                  <input id="email" class="form-control" type="text" name="name" placeholder="John Doe">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label col-sm-3">Password</label>
+                <div class="col-sm-6">
+                  <input id="password" class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success btn-lg padBot padTop">Create Account</button>
+              </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="navbar-fixed-bottom">
+  <% include ./partials/footer %>
+</div>
+</body>
+</html>

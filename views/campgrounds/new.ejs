@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/head %>
+<body>
+<% include ../partials/nav %>
+
+<div class="container padTop">
+  <div class="container hide-small">
+    <div class="row">
+      <div class="jumbotron padTop new">
+        <h1>Add a New Adventure</h1>
+        <p>Share your favorite campground with others.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <h1 class="new">Submit a New Campground</h1>
+
+      <div class="form-horizontal">
+          <form action="/campgrounds" method="POST">
+            <div class="form-group">
+              <label for="name" class="control-label col-sm-2">Campground Name</label>
+              <div class="col-sm-10">
+                <input id="name" class="form-control" type="text" name="new[name]" placeholder="Campground Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="image" class="control-label col-sm-2">Image URL</label>
+              <div class="col-sm-10">
+                <input id="image" class="form-control" type="text" name="new[image]" placeholder="Image URL">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="desc" class="control-label col-sm-2">Description</label>
+              <div class="col-sm-10">
+                <textarea name="new[description]" id="desc" class="form-control" rows="6" placeholder="Tell us what you love about this campsite."></textarea>
+              </div>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-primary btn-lg padBot padTop">Add Campground</button>
+            </div>
+          </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="navbar-fixed-bottom">
+  <% include ../partials/footer %>
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/head %>
+<body>
+<% include ../partials/nav %>
+
+<div class="container padTop">
+  <div class="container padTop">
+    <div class="row">
+      <div class="col-md-3">
+        <p class="lead">YelpCamp</p>
+        <div class="list-group">
+          <li class="list-group-item active">Info 1</li>
+          <li class="list-group-item">Info 2</li>
+          <li class="list-group-item">Info 3</li>
+        </div>
+        <!-- map -->
+      </div>
+      <div class="col-md-9">
+        <div class="thumbnail">
+          <img class="img-responsive" src="<%= campground.image %>" alt="<%= campground.name %>">
+        </div>
+          <div class="caption-full">
+            <h4 class="pull-right">$9.00/night</h4>
+          </div>
+          <h1><a href="#"><%= campground.name %></a></h1>
+          <!-- check if there is a user associalted with the campground, if no then print YelpCamp -->
+          <% if (campground.author.name) { %>
+            <p><em>Campground submitted by <%= campground.author.name %></em></p>
+          <% } else { %>
+            <p><em>Campground submitted by YelpCamp</em></p>
+          <% } %>
+
+          <!-- Edit && delete buttons -->
+          <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+            <div class="padBot text-right">
+              <a href="/campgrounds/<%= campground._id %>/edit" class="btn btn-warning">Edit</a>
+              <form class="inline padLeft" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
+            </div>
+          <% } %>
+
+          <%- campground.description %>
+          <div class="clearfix padBot">
+            <div class="pull-right">
+              <a href="#"><button class="btn btn-primary">Book a Night</button></a>
+            </div>
+          </div>
+          <!-- comments loop -->
+          <div class="well">
+            <div>
+              <h3 id="C">Comments:</h3>
+              <p>Add a comment to <%= campground.name %></p>
+              <% if (!currentUser) { %>
+                <a href="/campgrounds/<%= campground._id %>/comments/new"><button class="btn btn-success">Add Comment</button></a>
+              <% } %>
+              <hr>
+            </div>
+
+          <% campground.comments.forEach(function(comments) { %>
+            <div>
+              <p>
+                <strong><%= comments.author.name %></strong> - <%= comments.text %>
+                <br>
+              </p>
+              <!-- refactor to edit inline -->
+              <% if(currentUser && comments.author.id.equals(currentUser._id)) { %>
+              <a href="/campgrounds/<%= campground._id %>/comments/<%= comments._id %>/edit"><button class="btn btn-xs btn-warning padBot">Edit</button></a>
+              <form class="inline padLeft" action="/campgrounds/<%= campground._id %>/comments/<%= comments._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-xs btn-danger padBot">Delete</button>
+              </form>
+              <% } %>
+            </div>
+          <% }); %>
+<!-- user auth comments, add comment (Form) -->
+          <% if (currentUser) { %>
+            <hr>
+            <form action="/campgrounds/<%= campground._id%>/comments" method="POST">
+              <div class="form-group">
+                <label for="" class="sr-only">Comment</label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" id="comment" name="comment[text]" placeholder="Add a Comment">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success">Add Comment</button>
+            </form>
+          <% } %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include ../partials/footer %>
+
+</body>
+</html>

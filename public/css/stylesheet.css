@@ -1,0 +1,106 @@
+/*home page styles*/
+@import "./home.css";
+@import "./campground.css";
+@import "./new.css";
+@import "./show.css";
+@import "./concept.css";
+
+/*component styles */
+.container.padTop, .jumbotron.padTop {
+  margin-top: 50px;
+}
+
+.padBot {
+  margin-bottom: 25px;
+}
+
+.padTop {
+  margin-top: 25px;
+}
+
+.padLeft {
+  margin-left: 25px;
+}
+
+
+/*Custom colors*/
+.lt {
+  background-color: #2478E5;
+}
+
+.lt:hover {
+  background-color: #338cff;
+  color: white;
+}
+
+.dk {
+  background-color: #132E4E;
+  color: white;
+}
+
+.btn.dk:hover {
+  background-color: #24538a;
+  color: white;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.camp-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 600px) {
+    .flex {
+        flex-wrap: wrap;
+    }
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+footer {
+  color: white;
+  height: 60px;
+  margin-top: 60px;
+}
+
+h5 {
+  margin-top: 20px;
+}
+
+label {
+  font-size: 1.25em;
+}
+
+.hide-small {
+
+}
+
+@media (max-width: 600px) {
+    .hide-small {
+        display: none;
+    }
+}
+
+.btn-custom {
+  width: 80%;
+}
+
+.btn {
+  min-width: 100px;
+}
+
+.inline {
+  display: inline;
+}
+
+.container.flash {
+  margin-top: 80px;
+  margin-bottom: 0;
+}
