@@ -2,12 +2,12 @@
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
             <a class="navbar-brand" href="/">YelpCamp</a>
         </div>
 
@@ -26,7 +26,17 @@
                 <li><a href="#">Welcome back <%= currentUser.name %></a></li>
                 <li><a href="/logout">Log-Out</a></li>
               <% } %>
-
+              <!-- campgrounds fuzzy search -->
+              <form class="navbar-form navbar-right pullRight" action="/campgrounds" method="GET">
+                <div class="col-lg-12">
+                  <div class="input-group">
+                    <input name="q" type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-min btn-default" type="submit">Go!</button>
+                    </span>
+                  </div><!-- /input-group -->
+                </div><!-- /.col-lg-12 -->
+              </form>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

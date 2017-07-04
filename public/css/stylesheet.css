@@ -22,6 +22,15 @@
   margin-left: 25px;
 }
 
+.pullRight {
+  margin-right: -45px;
+}
+
+@media (max-width: 600px) {
+    .pullRight {
+        margin-right: -15px;
+    }
+}
 
 /*Custom colors*/
 .lt {
@@ -94,6 +103,10 @@ label {
 
 .btn {
   min-width: 100px;
+}
+
+.btn-min {
+  min-width: 0;
 }
 
 .inline {
